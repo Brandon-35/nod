@@ -75,7 +75,7 @@ public struct ListeningGate: Sendable {
     static func allowedByDefault(_ action: GestureAction, _ context: ListeningContext) -> Bool {
         switch action {
         case .none: false
-        case .playPause, .nextTrack, .previousTrack: context.notificationVisible || context.mediaPlaying
+        case .playPause, .nextTrack, .previousTrack, .volumeUp, .volumeDown, .toggleMute: context.notificationVisible || context.mediaPlaying
         default: context.notificationVisible
         }
     }

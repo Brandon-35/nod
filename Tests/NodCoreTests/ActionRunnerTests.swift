@@ -9,6 +9,7 @@ import Testing
         try await d.run(.playPause)
         try await d.run(.nextTrack)
         try await d.run(.previousTrack)
+        for a: GestureAction in [.volumeUp, .volumeDown, .toggleMute, .screenshot, .missionControl] { try await d.run(a) }
         try await d.run(.keyboardShortcut(KeyCombo(keyCode: 49, command: true)))
         try await d.run(.runShortcut("  Focus mode "))
         try await d.run(.dismissNotification)
@@ -16,14 +17,14 @@ import Testing
         try await d.run(.answerFaceTime)
         try await d.run(.declineFaceTime)
         try await d.run(.none)
-        #expect(fake.calls == ["playPause", "nextTrack", "previousTrack", "key:49", "shortcut:Focus mode", "dismiss", "dismiss", "answer", "decline"])
+        #expect(fake.calls == ["playPause", "nextTrack", "previousTrack", "volumeUp", "volumeDown", "toggleMute", "key:20", "key:126", "key:49", "shortcut:Focus mode", "dismiss", "dismiss", "answer", "decline"])
     }
 
     @Test func missingAccessibilityIsAFixableErrorAndNothingRuns() async {
         let fake = FakeActionBackends()
         fake.accessibilityGranted = false
         let d = fake.dispatcher()
-        for action: GestureAction in [.playPause, .nextTrack, .previousTrack, .dismissNotification, .answerFaceTime, .declineFaceTime,
+        for action: GestureAction in [.playPause, .nextTrack, .previousTrack, .volumeUp, .toggleMute, .screenshot, .missionControl, .dismissNotification, .answerFaceTime, .declineFaceTime,
                                       .keyboardShortcut(KeyCombo(keyCode: 1))] {
             await #expect(throws: ActionError.accessibilityNotGranted) { try await d.run(action) }
         }

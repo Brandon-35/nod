@@ -20,10 +20,16 @@ import NodCore
     private static let playKey: Int32 = 16 // NX_KEYTYPE_PLAY
     private static let nextKey: Int32 = 17 // NX_KEYTYPE_NEXT
     private static let previousKey: Int32 = 18 // NX_KEYTYPE_PREVIOUS
+    private static let soundUpKey: Int32 = 0 // NX_KEYTYPE_SOUND_UP
+    private static let soundDownKey: Int32 = 1 // NX_KEYTYPE_SOUND_DOWN
+    private static let muteKey: Int32 = 7 // NX_KEYTYPE_MUTE
 
     func playPause() throws { Self.postMediaKey(Self.playKey) }
     func nextTrack() throws { Self.postMediaKey(Self.nextKey) }
     func previousTrack() throws { Self.postMediaKey(Self.previousKey) }
+    func volumeUp() throws { Self.postMediaKey(Self.soundUpKey) }
+    func volumeDown() throws { Self.postMediaKey(Self.soundDownKey) }
+    func toggleMute() throws { Self.postMediaKey(Self.muteKey) }
 
     func send(_ combo: KeyCombo) throws {
         var flags: CGEventFlags = []
