@@ -21,6 +21,11 @@ public enum GestureAction: Sendable, Codable, Equatable, Hashable {
     case playPause
     case nextTrack
     case previousTrack
+    case volumeUp
+    case volumeDown
+    case toggleMute
+    case screenshot
+    case missionControl
     case answerFaceTime
     case declineFaceTime
     case keyboardShortcut(KeyCombo)

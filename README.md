@@ -25,6 +25,8 @@ Each of the four head gestures runs one action you choose:
 | Dismiss or snooze a notification | Nod to clear a banner |
 | Play / pause, next track, previous track | Tilt right for next track |
 | Answer or decline a FaceTime call | Nod to answer |
+| Volume up / down, mute | Tilt left for quieter |
+| Screenshot, Mission Control | Shake to take a screenshot |
 | Press any shortcut key | Shake to send a hotkey |
 | Run a Shortcut | Tilt left to run your own automation |
 

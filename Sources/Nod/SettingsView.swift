@@ -72,7 +72,7 @@ struct SettingsView: View {
             .pickerStyle(.radioGroup)
             Text("Nodding along to music can look like a gesture. The recommended mode avoids that.").foregroundStyle(.secondary)
             if app.listenMode == .onlyWhenNotification, app.settings.mappings.contains(where: { $0.action == .playPause || $0.action == .nextTrack || $0.action == .previousTrack }) {
-                Text("Play / pause and track skipping also work while media is playing.").foregroundStyle(.secondary)
+                Text("Media actions (play / pause, tracks, volume, mute) also work while media is playing.").foregroundStyle(.secondary)
             }
             if app.listenMode == .armWithDoubleGesture {
                 Picker("Arm gesture", selection: Binding(get: { app.settings.armGesture }, set: { g in app.update { $0.armGesture = g } })) {

@@ -6,6 +6,9 @@ import Foundation
     func playPause() throws
     func nextTrack() throws
     func previousTrack() throws
+    func volumeUp() throws
+    func volumeDown() throws
+    func toggleMute() throws
 }
 
 @MainActor public protocol KeySending: AnyObject {
@@ -65,6 +68,21 @@ import Foundation
         case .previousTrack:
             try requireAccessibility()
             try media.previousTrack()
+        case .volumeUp:
+            try requireAccessibility()
+            try media.volumeUp()
+        case .volumeDown:
+            try requireAccessibility()
+            try media.volumeDown()
+        case .toggleMute:
+            try requireAccessibility()
+            try media.toggleMute()
+        case .screenshot:
+            try requireAccessibility()
+            try keys.send(KeyCombo(keyCode: 20, command: true, shift: true)) // Command-Shift-3
+        case .missionControl:
+            try requireAccessibility()
+            try keys.send(KeyCombo(keyCode: 126, control: true)) // Control-Up Arrow
         case .keyboardShortcut(let combo):
             try requireAccessibility()
             try keys.send(combo)
@@ -110,6 +128,9 @@ import Foundation
     public func playPause() throws { try record("playPause") }
     public func nextTrack() throws { try record("nextTrack") }
     public func previousTrack() throws { try record("previousTrack") }
+    public func volumeUp() throws { try record("volumeUp") }
+    public func volumeDown() throws { try record("volumeDown") }
+    public func toggleMute() throws { try record("toggleMute") }
     public func send(_ combo: KeyCombo) throws { try record("key:\(combo.keyCode)") }
     public func run(name: String) async throws { try record("shortcut:\(name)") }
     public func dismiss() throws { try record("dismiss") }

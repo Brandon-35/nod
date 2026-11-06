@@ -4,7 +4,9 @@ import NodCore
 enum ActionChoices {
     static let all: [(label: String, action: GestureAction)] = [
         ("Do nothing", .none), ("Dismiss notification", .dismissNotification), ("Snooze notification", .snoozeNotification),
-        ("Play / pause", .playPause), ("Next track", .nextTrack), ("Previous track", .previousTrack), ("Answer FaceTime", .answerFaceTime),
+        ("Play / pause", .playPause), ("Next track", .nextTrack), ("Previous track", .previousTrack),
+        ("Volume up", .volumeUp), ("Volume down", .volumeDown), ("Mute / unmute", .toggleMute),
+        ("Screenshot", .screenshot), ("Mission Control", .missionControl), ("Answer FaceTime", .answerFaceTime),
         ("Decline FaceTime", .declineFaceTime),
     ]
 
