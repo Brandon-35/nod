@@ -34,6 +34,8 @@ scripts/smoke.sh                                                  # end-to-end s
 
 ## Known limits
 
+See [docs/LESSONS.md](docs/LESSONS.md) for what the live tests showed.
+
 - Live tests on real AirPods showed the sensor streams at 50 Hz, but the default thresholds (nod: 0.25 rad pitch, shake: 0.35 rad yaw, tilt: 0.25 rad roll, all within 0.6 s) were hard to reach with a natural nod, and nods were not recognised reliably. Calibration and sensitivity settings exist but are unproven.
 - Euler angles from the headphone reference frame may mix axes depending on how the AirPods sit; a head-frame transform has not been tried.
 - Media actions run only while a notification is visible or audio is playing, unless the listening mode is "Always".
